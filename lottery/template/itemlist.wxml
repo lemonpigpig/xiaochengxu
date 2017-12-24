@@ -1,0 +1,29 @@
+<template name="item">
+<view class="page__coupons">
+  <view class="item__coupon">
+    <view class="wraper__item">
+      <image src="/static/coupon_bg.png" mode="scaleToFill" class="bg__coupon"></image>
+      <view class='inner__coupon'>
+       <view class='item_inner left__coupon small__font'>
+          <view class="item__inner_up left__up">
+            <span>折扣优惠券</span>
+          </view>
+          <view class="smallest__font gray__color">
+            有效期至2099年
+          </view>
+       </view>
+       <view class="item_inner right__coupon">
+          <view class='item__inner_up'>
+             <span class="small__font red_color">¥
+             </span>
+            <span class="big__font red_color margin__left2">{{money}}</span>
+          </view>
+          <view class="smallest__font gray__color">
+            满30可用
+          </view>
+       </view>
+     </view> 
+    </view>  
+  </view>
+</view>
+</template>

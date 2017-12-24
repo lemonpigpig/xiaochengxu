@@ -1,0 +1,12 @@
+<import src="../../template/itemlist.wxml"/>
+
+<view>
+  <!-- loading -->
+  <loading wx:if="{{hidden}}">
+      加载中...
+  </loading>
+  <view>{{test}}{{appId}}</view>
+  <view wx:for="{{couponList}}" wx:key="{{item.id}}">
+     <template is="item" data="{{...item}}"/> 
+  </view>
+</view>

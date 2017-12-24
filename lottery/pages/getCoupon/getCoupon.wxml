@@ -1,0 +1,29 @@
+<view>
+  <view class="section">
+    <view class="inner__section">
+      <input 
+      class="input__code"
+      placeholder="请输入彩票编号"          
+      auto-focus
+      cursor-spacing="20px"/>
+      <button 
+        class="submit"
+        type="default" 
+        size="mini"
+        style="color:#48C23D;"
+        bindtap="recieve">
+        领取
+      </button>
+    </view>
+  </view>
+  <view 
+    class="scan__code" hover-class="hover__scan__code"
+    bindtap="scanCode">
+    <span class="text__scan">
+      扫码
+    </span>
+    <span class="text__scan">
+      领取
+    </span>
+  </view>
+</view>

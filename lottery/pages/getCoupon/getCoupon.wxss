@@ -1,0 +1,36 @@
+.section {
+  font-size: 12px;
+}
+.inner__section {
+   position: relative;
+   margin-top: 20px;
+}
+.input__code {
+  padding: 0px 90px 0px 20px;
+}
+.scan__code {
+  position: fixed;
+  bottom: 95px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #f2f2f2;
+  text-align: center;
+  font-size: 14px;
+  color: #48C23D;
+  display: flex;
+  flex-direction: column;
+}
+.hover__scan__code {
+  background: #eee;
+}
+.submit {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+}
+.text__scan {
+  flex: 1;
+  line-height: 30px;
+}
