@@ -1,2 +1,4 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="page__login">
+  <image src="../../static/ball.gif" mode="aspectFit" 
+    style="width:100px;height:100px;"></image>
+</view>

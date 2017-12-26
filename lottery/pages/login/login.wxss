@@ -1,1 +1,5 @@
-/* pages/login/login.wxss */
+.page__login image{
+  margin: 50% auto auto auto;
+  display: block;
+}
+  

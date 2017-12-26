@@ -2,15 +2,20 @@ const util = require('../../utils/util.js');
 var app = getApp();
 Page({
     data: {
-        /**
-         * 页面配置
-         */
-        winWidth: 0,
-        winHeight: 0,
         // loading
         hidden: false,
         couponList: app.couponList,
-        userInfo: null
+        userInfo: null,
+        test: app.globalData.test
+    },
+    couponModel: function(data) {
+      if (data && data.length > 0) {
+        return {
+            id: data.id ? data.id : '',
+            money: data.price ? data.price : ''
+        }
+      }
+      return [{ id: 1, money: 123 }];
     },
     /** 
      * 页面初始化
@@ -18,12 +23,14 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        that.setData({ userInfo: wx.getStorageSync("userInfo") });
+        that.setData({ userInfo: app.globalData.userInfo });
         if (util.getToken()) {
           util.AJAX({
             url: "/coupon/unused-coupon",
             header: { "Content-Type": "application/json", "token": that.data.userInfo.token },
             success: function (res) {
+              that.setData({ couponList: that.couponModel(res.data)});
+              app.globalData.couponList = that.couponModel(res.data);
               console.log(res);
             },
             fail: function (res) {
@@ -31,50 +38,22 @@ Page({
             }
           });
         }
-        // app.addListener(function (changedata) {
-        //   that.setData({
-        //     couponList: [{id:1, money: 234}]
-        //   })
-        // });
-        /**
-         * 获取系统信息
-         */
-        wx.getSystemInfo({
-            success: function (res) {
-                that.setData({
-                    winWidth: res.windowWidth,
-                    winHeight: res.windowHeight
-                });
-            }
-        });
-
+        app.addListener(function (data) {
+          if (data.couponList instanceof Array) {
+            var couponList = [...data.couponList, ...that.data.couponList]
+          } else {
+            var couponList = [data.couponList, ...that.data.couponList];
+          }
+          that.setData({
+            couponList: couponList
+          });
+        })
         /**
          * 显示 loading
          */
         that.setData({
             hidden: true
         });
-        // 请求精选数据
-        // util.AJAX("news/latest", function (res) {
-
-        //     var arr = res.data;
-        //     var format = util.getFormatDate(arr.date);
-
-        //     // 格式化日期方便加载指定日期数据
-        //     // 格式化日期获取星期几方便显示
-        //     arr["dateDay"] = format.dateDay;
-        //     // 获取当前现有数据进行保存
-        //     var list = that.data.datalist;
-
-        //     // 重新写入数据
-        //     that.setData({
-        //         datalist: list.concat(arr),
-        //         topStories: arr.top_stories,
-        //         dataListDateCurrent: arr.date,    // 当前日期
-        //         dataListDateCount: 1
-        //     });
-        // });
-
     },
     onReady: function () {
         // 页面渲染完成

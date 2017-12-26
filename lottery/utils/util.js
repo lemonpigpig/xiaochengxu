@@ -53,7 +53,6 @@ module.exports = {
       console.log("this.token:", this.token);
       var { url, success, fail, method = "get", header = {}, data = {}} = obj;
       header.token = this.token;
-        console.log(header);
         wx.request({
           url: config.API_HOST + url,
             method : method,
