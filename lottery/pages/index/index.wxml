@@ -5,7 +5,7 @@
   <loading wx:if="{{hidden}}">
       加载中...
   </loading>
-  <view>{{test}}{{appId}}</view>
+  <view>用户信息：{{userInfo.nickName}}</view>
   <view wx:for="{{couponList}}" wx:key="{{item.id}}">
      <template is="item" data="{{...item}}"/> 
   </view>

@@ -1,6 +1,3 @@
-
-
-
 const util = require('../../utils/util.js');
 var app = getApp();
 Page({
@@ -8,28 +5,37 @@ Page({
         /**
          * 页面配置
          */
-        appId: app.appId,
-        test: 'ddd',
         winWidth: 0,
         winHeight: 0,
         // loading
         hidden: false,
-        couponList: app.couponList
+        couponList: app.couponList,
+        userInfo: null
     },
-
     /** 
      * 页面初始化
      * options 为页面跳转所带来的参数
      */
     onLoad: function (options) {
         var that = this;
-        app.addListener(function (changedata) {
-          that.setData({
-            test: changedata,
-            appId: 'appId',
-            couponList: [{id:1, money: 234}]
-          })
-        });
+        that.setData({ userInfo: wx.getStorageSync("userInfo") });
+        if (util.getToken()) {
+          util.AJAX({
+            url: "/coupon/unused-coupon",
+            header: { "Content-Type": "application/json", "token": that.data.userInfo.token },
+            success: function (res) {
+              console.log(res);
+            },
+            fail: function (res) {
+              console.log(res)
+            }
+          });
+        }
+        // app.addListener(function (changedata) {
+        //   that.setData({
+        //     couponList: [{id:1, money: 234}]
+        //   })
+        // });
         /**
          * 获取系统信息
          */
@@ -79,10 +85,5 @@ Page({
             hidden: false
           });
         }, 500);
-
-
-    },
-    onShow: function() {
-      console.log("i am a onshow");
     }
 })

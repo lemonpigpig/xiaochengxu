@@ -20,9 +20,6 @@ Page({
           wx.switchTab({
             url: "../index/index",
             success: function() {
-              console.log("-------------------");
-              var pages = getCurrentPages();
-              that.setData({ test: 'ssssss'});
             }
           });
           // console.log('success', code);
@@ -33,7 +30,19 @@ Page({
       });
     },
     recieve: function() {
-      app.setChangedData('page2-data');
+      // app.setChangedData('page2-data');
+      util.AJAX({
+        url: "/coupon/pick-coupon",
+        data: {
+          lotteryCode: 12345
+        },
+        success: function (res) {
+          console.log(res);
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      });
     },
     /** 
      * 页面初始化

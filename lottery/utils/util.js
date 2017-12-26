@@ -41,15 +41,29 @@ module.exports = {
 
     formatTime: formatTime,
     getTime : getTime,
-
-    AJAX : function( data = '', fn, method = "get", header = {}){
+    token: '',
+    setToken: function(data) {
+      console.log("setToken:", data);
+      this.token = data;
+    },
+    getToken: function() {
+      return this.token;
+    },
+    AJAX : function(obj){
+      console.log("this.token:", this.token);
+      var { url, success, fail, method = "get", header = {}, data = {}} = obj;
+      header.token = this.token;
+        console.log(header);
         wx.request({
-            url: config.API_HOST + data,
-            method : method ? method : 'get',
-            data: {},
+          url: config.API_HOST + url,
+            method : method,
+            data: data,
             header: header ? header : {"Content-Type":"application/json"},
             success: function( res ) {
-                fn( res );
+              success( res );
+            },
+            fail: function(res) {
+              fail(res);
             }
         });
     },
