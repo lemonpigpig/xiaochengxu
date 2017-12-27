@@ -4,37 +4,53 @@ var app = getApp();
 Page({
     data: {
         // loading
-        hidden: false
+        hidden: false,
+        code: ''
+    },
+    bindKeyInput: function (e) {
+      this.setData({
+        code: e.detail.value
+      });
     },
     scanCode: function() {
       var that = this;
       wx.scanCode({
         success: function(res) {
           var code = res.result;
-          // this.recieve(code);
+          console.log("scancode:", code);
           wx.switchTab({
             url: "../index/index",
             success: function() {
-              this.recieve(code);
+              that.setData({ code: code });
+              that.recieve();
             }
           });
-          // console.log('success', code);
         },
         fail: function(res) {
           console.log('fail', res);
         }
       });
     },
-    recieve: function(code) {
-      // app.setChangedData('page2-data');
+    recieve: function() {
+      // app.setChangedData('page2-data');}
+      if (!this.data.code || this.data.code.length === 0) {
+        wx.showModal({
+          title: '提示',
+          content: '请输入有效的券号！',
+        });
+        return;
+      }
       var  that = this;
       util.AJAX({
         url: "/coupon/pick-coupon",
         data: {
-          lotteryCode: code
+          lotteryCode: this.data.code
         },
         success: function (res) {
-          app.setChangedData({ couponList: { id: 99999, money: 999 }});
+          app.setChangedData();
+          wx.showToast({
+            title: '领取成功',
+          });
         },
         fail: function (res) {
           console.log(res);
@@ -50,7 +66,6 @@ Page({
         wx.setNavigationBarTitle({
           title: "领取优惠券",
           success: function (res) {
-            console.log(123);
           }
         })
     },

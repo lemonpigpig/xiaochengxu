@@ -5,7 +5,16 @@
   <loading wx:if="{{hidden}}">
       加载中...
   </loading>
-  <view>用户信息：{{userInfo.nickName}}{{test}}</view>
+  <!-- <view>用户信息：{{userInfo.nickName}}</view> -->
+  <view>
+    <view class="tool__bar" bindtap="scan">
+      <view>
+        <image src="/static/sao.png" style="width:22px;height:22px;"></image>
+      </view>
+      <view>用券</view>
+    </view>
+    
+  </view>
   <view wx:for="{{couponList}}" wx:key="{{item.id}}">
      <template is="item" data="{{...item}}"/> 
   </view>

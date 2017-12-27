@@ -1,7 +1,18 @@
 
+
 // 加载配置文件
 const config = require( '../config.js' );
 
+function scanCode(success, fail) {
+  wx.scanCode({
+    success: function(res) {
+      success(res);
+    },
+    fail: function(res) {
+      fail ? fail(res) : '';
+    }
+  })
+}
 function formatTime( date ) {
 
     var year = date.getFullYear();
@@ -38,19 +49,17 @@ function getTime( timestamp ) {
 }
 
 module.exports = {
-
+    scanCode: scanCode,
     formatTime: formatTime,
     getTime : getTime,
     token: '',
     setToken: function(data) {
-      console.log("setToken:", data);
       this.token = data;
     },
     getToken: function() {
       return this.token;
     },
     AJAX : function(obj){
-      console.log("this.token:", this.token);
       var { url, success, fail, method = "get", header = {}, data = {}} = obj;
       header.token = this.token;
         wx.request({
@@ -103,12 +112,10 @@ module.exports = {
     },
     generateUrl : function(obj, baseurl) {
       var keys = Object.keys(obj);
-      console.log(keys, obj[keys[0]]);
       var queryurl = "?" + keys[0] + "=" + obj[keys[0]];
       for(var i=1; i<keys.length; i++) {
         queryurl += "&" + keys[i] + "=" + obj[keys[i]];
       }
-      console.log(baseurl + queryurl)
       return baseurl + queryurl;
     }
 }

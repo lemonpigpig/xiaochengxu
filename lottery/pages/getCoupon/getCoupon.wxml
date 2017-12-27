@@ -5,7 +5,8 @@
       class="input__code"
       placeholder="请输入彩票编号"          
       auto-focus
-      cursor-spacing="20px"/>
+      cursor-spacing="20px"
+      bindinput="bindKeyInput"/>
       <button 
         class="submit"
         type="default" 

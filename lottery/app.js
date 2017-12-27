@@ -4,7 +4,9 @@ App({
   onHide: function() {
       // Do something when hide.
   },
-  globalData: {userInfo: null, test: 'test'},
+  globalData: {
+    userInfo: null
+  },
   appId: 'wx40e84ae5e0e3c442',
   secret: '9415c2dda017891a830e71aa44cc0c77',
   couponList: [],

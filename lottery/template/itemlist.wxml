@@ -6,7 +6,7 @@
       <view class='inner__coupon'>
        <view class='item_inner left__coupon small__font'>
           <view class="item__inner_up left__up">
-            <span>折扣优惠券</span>
+            <span>折扣优惠券</span><span>x{{count}}</span>
           </view>
           <view class="smallest__font gray__color">
             有效期至2099年

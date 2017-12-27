@@ -1,0 +1,25 @@
+<import src="../../template/itemlist.wxml"/>
+<view>
+  <view class="detail__merchant">
+    <view class="merchant_title">商家信息</view>
+    <view>
+      <text class="text__style1">公司名称：</text>
+      <text class="text__style2">{{detail.name}}</text>
+    </view>
+    <view>
+      <text class="text__style1">公司地址：</text>
+      <text class="text__style2">{{detail.address}}</text>
+    </view>
+    <view>
+      <text class="text__style1">联系 人：</text>
+      <text class="text__style2">{{detail.contact}}</text>
+    </view>
+    <view>
+      <text class="text__style1">联系电话：</text>
+      <text class="text__style2">{{detail.phone}}</text>
+    </view>
+  </view>
+  <view wx:for="{{couponList}}" wx:key="{{item.id}}">
+     <template is="item" data="{{...item}}"/> 
+  </view>
+</view>

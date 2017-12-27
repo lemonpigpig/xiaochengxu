@@ -1,3 +1,18 @@
+.detail__merchant {
+  padding: 15px 15px 10px 15px;
+}
+.merchant_title {
+  font-size: 18px;
+}
+.text__style1 {
+  font-size: 14px;
+  color: #000;
+}
+.text__style2 {
+  font-size: 14px;
+  color:gray;
+}
+
 body {
   background: #f2f2f2;
 }
@@ -73,9 +88,8 @@ body {
   margin-left: 2px; 
 }
 
-.tool__bar {
+
+.sao__bar {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  margin-top: 15px;
 }
