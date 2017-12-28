@@ -53,6 +53,9 @@ Page({
           });
         },
         fail: function (res) {
+          wx.showToast({
+            title: '领取失败',
+          })
           console.log(res);
         }
       });

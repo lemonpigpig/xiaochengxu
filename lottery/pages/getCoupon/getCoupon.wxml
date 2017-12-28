@@ -13,7 +13,7 @@
         size="mini"
         style="color:#48C23D;"
         bindtap="recieve">
-        领取
+        领取    text-overflow: ellipsis;
       </button>
     </view>
   </view>

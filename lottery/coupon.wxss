@@ -5,7 +5,7 @@
   text-align: center;
   box-sizing: border-box;
   width: 100%;
-  padding: 0px 3% 0px 3%; 
+  padding: 0px 2% 0px 2%; 
 }
 .bg__coupon {
   width: 100%;
@@ -13,7 +13,7 @@
 }
 .inner__coupon {
   position: absolute;
-  top: 0px;
+  top: 4px;
   width: 100%; 
   height: 75px;
   font-size: 0px;
@@ -32,18 +32,22 @@
 }
 .left__coupon {
   text-align: left;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 .right__coupon {
   text-align: right;
   padding-right: 15px;
 }
 .item__inner_up {
-  height: 50px;
+  overflow:hidden;
 }
 .left__up {
-  padding-top: 20px;
+  /* padding-top: 15px; */
   box-sizing: border-box;
+  height: 38px;
+}
+.right__up {
+  height: 40px;
 }
 .smallest__font {
   font-size: 12px;
@@ -75,4 +79,11 @@
   align-items: center;
   flex-direction: column;
   margin-top: 15px;
+}
+.desp__coupon {
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 6px;
+  /* white-space: nowrap;  */
 }

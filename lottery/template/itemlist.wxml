@@ -1,3 +1,4 @@
+
 <template name="item">
 <view class="page__coupons">
   <view class="item__coupon">
@@ -8,17 +9,17 @@
           <view class="item__inner_up left__up">
             <span>{{name}}</span><span style="color:red;">x{{count}}</span>
           </view>
-          <view class="smallest__font gray__color">
+          <view class="smallest__font gray__color" style='margin-top: 2px;'>
             有效期至2099年
           </view>
        </view>
        <view class="item_inner right__coupon">
-          <view class='item__inner_up'>
+          <view class='item__inner_up right__up'>
              <span class="small__font red_color">¥
              </span>
             <span class="big__font red_color margin__left2">{{money}}</span>
           </view>
-          <view class="smallest__font gray__color">
+          <view class="smallest__font gray__color desp__coupon">
             {{description}}
           </view>
        </view>
