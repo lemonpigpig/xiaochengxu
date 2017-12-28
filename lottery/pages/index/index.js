@@ -23,7 +23,9 @@ Page({
             id: data[i].id ? data[i].id : '',
             money: data[i].price ? data[i].price : '',
             count: data[i].count ? data[i].count : '',
-            description: data[i].description ? data[i].description: ''
+            description: data[i].description ? data[i].description: '',
+            name: data[i].name ? data[i].name : ''
+
           });
         }
       }
@@ -36,6 +38,7 @@ Page({
           url: "/coupon/unused-coupon",
           header: { "Content-Type": "application/json", "token": that.data.userInfo.token },
           success: function (res) {
+            console.log("couponList:", res.data.data);
             that.setData({ couponList: that.couponModel(res.data.data) });
             app.globalData.couponList = that.couponModel(res.data.data);
           },

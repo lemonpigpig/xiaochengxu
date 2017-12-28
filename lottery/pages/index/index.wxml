@@ -1,6 +1,5 @@
 <import src="../../template/itemlist.wxml"/>
-
-<view>
+<view class='wraper'>
   <!-- loading -->
   <loading wx:if="{{hidden}}">
       加载中...
@@ -13,9 +12,16 @@
       </view>
       <view>用券</view>
     </view>
-    
   </view>
-  <view wx:for="{{couponList}}" wx:key="{{item.id}}">
-     <template is="item" data="{{...item}}"/> 
+  <view class='no__result' wx:if="{{couponList.length===0}}">
+    <image src='/static/no_result1.png' style='width: 121px; height: 74px;'></image>
+    <text>
+      您暂时还没有可用的优惠券，请先领取
+    </text>
   </view>
+   <view wx:else>
+    <view wx:for="{{couponList}}" wx:key="{{item.id}}">
+      <template is="item" data="{{...item}}"/> 
+    </view> 
+  </view> 
 </view>
