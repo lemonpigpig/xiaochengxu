@@ -3,11 +3,12 @@
 <view class="page__coupons">
   <view class="item__coupon">
     <view class="wraper__item">
-      <image src="/static/coupon_bg.png" mode="scaleToFill" class="bg__coupon"></image>
+      <image src="/static/coupon_bg.png" mode="scaleToFill" class="bg__coupon {{active ? 'active_coupn' : ''}}"></image>
       <view class='inner__coupon'>
        <view class='item_inner left__coupon small__font'>
           <view class="item__inner_up left__up">
-            <span>{{name}}</span><span style="color:red;">x{{count}}</span>
+            <span>{{name}}</span>
+            <span style="color:red;" wx:if="{{flag!==1}}">x{{count}}</span>
           </view>
           <view class="smallest__font gray__color" style='margin-top: 2px;'>
             有效期至2099年

@@ -18,13 +18,15 @@ Page({
         success: function(res) {
           var code = res.result;
           console.log("scancode:", code);
-          wx.switchTab({
-            url: "../index/index",
-            success: function() {
-              that.setData({ code: code });
-              that.recieve();
-            }
-          });
+          that.setData({ code: code });
+          that.recieve();
+          // wx.switchTab({
+          //   url: "../index/index",
+          //   success: function() {
+          //     that.setData({ code: code });
+          //     that.recieve();
+          //   }
+          // });
         },
         fail: function(res) {
           console.log('fail', res);
@@ -47,10 +49,18 @@ Page({
           lotteryCode: this.data.code
         },
         success: function (res) {
-          app.setChangedData();
-          wx.showToast({
-            title: '领取成功',
-          });
+          console.log(res.data.data);
+          if (res.data.data) {
+            app.setChangedData();
+            wx.showToast({
+              title: '领取成功'
+            });
+          } else {
+            wx.showToast({
+              title: '领取失败'
+            });
+          }
+         
         },
         fail: function (res) {
           wx.showToast({
@@ -66,11 +76,6 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        wx.setNavigationBarTitle({
-          title: "领取优惠券",
-          success: function (res) {
-          }
-        })
     },
     onReady: function () {
       

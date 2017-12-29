@@ -1,5 +1,14 @@
+
 <import src="../../template/itemlist.wxml"/>
-<view>
+<view class='merchant__wraper'>
+  <view class='merchant_tool__bar'>
+    <view class='merchant_tool__item' 
+    style='text-align:left'
+    bindtap='back'>返回</view>
+    <view class='merchant_tool__item' 
+    style='text-align:right'
+    bindtap='consumer'>领取</view>
+  </view>
   <view class="detail__merchant">
     <view class="merchant_title">商家信息</view>
     <view>
@@ -19,7 +28,11 @@
       <text class="text__style2">{{detail.phone}}</text>
     </view>
   </view>
-  <view wx:for="{{couponList}}" wx:key="{{item.id}}">
+  <view 
+  wx:for="{{couponList}}" 
+  wx:key="{{item.id}}" 
+  bindtap='select'
+  data-coupon="{{item}}">
      <template is="item" data="{{...item}}"/> 
   </view>
 </view>

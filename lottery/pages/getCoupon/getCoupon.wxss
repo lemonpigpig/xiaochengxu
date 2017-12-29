@@ -1,5 +1,9 @@
 .section {
   font-size: 12px;
+  background: #fff;
+  height:75%;
+  position:fixed;
+  width:100%;
 }
 .inner__section {
    position: relative;

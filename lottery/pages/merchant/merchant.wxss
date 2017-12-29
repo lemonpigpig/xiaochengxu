@@ -1,4 +1,17 @@
 @import "../../coupon.wxss";
+.merchant__wraper {
+  padding-bottom: 40px;
+}
+.merchant_tool__bar {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 10px 15px 10px 15px;
+  border-bottom: 1px solid #bdb9b9;
+}
+.merchant_tool__item {
+  width: 100%
+} 
 .detail__merchant {
   padding: 15px 15px 10px 15px;
 }

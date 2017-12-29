@@ -1,16 +1,76 @@
 const util = require('../../utils/util.js');
 const app = getApp();
 Page({
-
-  /**
+  /**mer
    * 页面的初始数据
    */
   data: {
     detail: null,
-    couponList: []
+    couponList: [],
+    id: null
+  },
+  back: function() {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+  select: function (e) {
+    var obj = e.currentTarget.dataset.coupon;
+    var index = this.data.couponList.findIndex(function (item, index, arr) {
+      return item.id == obj.id;
+    });
+    var key = "couponList[" + index + "].active";
+    if (!obj.active) {
+      this.setData({
+        [key]: true
+      });
+    } else {
+      this.setData({
+        [key]: false
+      });
+    }
+  },
+  getSeleted: function () {
+    return this.data.couponList.filter(function(item, index, arr) {
+      return item.active;
+    }).map(function(item, key, arr) {
+      return item.id + '';
+    })
+  },
+  consumer: function() {
+    var list = this.getSeleted();
+    if (list.length === 0) {
+      wx.showToast({
+        title: '请选择优惠券',
+      });
+    } else {
+      util.AJAX({
+        url: "/coupon/consume-coupon",
+        method: "POST",
+        data: { couponNoList: list, merchantId: this.data.id },
+        success: function (res) {
+          console.log(res)
+          if (res.statusCode === 200) {
+            if (res.data.data) {
+              wx.showToast({
+                title: '使用成功',
+              });
+            }
+          }
+          // app.setChangedData();
+
+        },
+        fail: function (res) {
+          console.log(res)
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      })
+    }
+   
   },
   merchantModel: function (res) {
-    console.log(res);
     return {
       name: res.merchantName ? res.merchantName : '',
       address: res.merchantAddress ? res.merchantAddress : '',
@@ -27,8 +87,9 @@ Page({
           money: data[i].price ? data[i].price : '',
           count: data[i].count ? data[i].count : '',
           description: data[i].description ? data[i].description : '',
-          name: data[i].name ? data[i].name : ''
-
+          name: data[i].name ? data[i].name : '',
+          flag: 1,
+          active: false
         });
       }
     }
@@ -41,11 +102,13 @@ Page({
       method: "GET",
       data: { sysId: id },
       success: function (res) {
-        that.setData({ detail: that.merchantModel(res.data.data.merchantInfo) });
-        that.setData({ couponList: that.couponModel(res.data.data.couponInfo) });
+        if (res.statusCode === 200) {
+          that.setData({ detail: that.merchantModel(res.data.data.merchantInfo) });
+          that.setData({ couponList: that.couponModel(res.data.data.couponInfo) });
+        } 
       },
-      fail: function () {
-
+      fail: function (res) {
+        console.log(res);
       },
     });
   },
@@ -55,6 +118,7 @@ Page({
    */
   onLoad: function (options) {
     this.getDetail(options.id);
+    this.setData({ id: options.id });
   },
 
   /**

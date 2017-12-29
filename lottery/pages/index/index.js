@@ -5,7 +5,12 @@ Page({
         // loading
         hidden: false,
         couponList: app.couponList,
-        userInfo: null
+        userInfo: null,
+        
+        fixed: false
+    },
+    select: function(e) {
+      console.log(e);
     },
     scan: function () {
       var that = this;
@@ -17,6 +22,7 @@ Page({
     },
     couponModel: function(data) {
       var model = [];
+      if (data.length === 0) this.setData({ fixed: true });
       if (data && data.length > 0) {
         for (var i=0;i<data.length;i++) {
           model.push({
@@ -41,9 +47,15 @@ Page({
             console.log("couponList:", res.data.data);
             that.setData({ couponList: that.couponModel(res.data.data) });
             app.globalData.couponList = that.couponModel(res.data.data);
+            that.setData({
+              hidden: false
+            });
           },
           fail: function (res) {
-            console.log(res)
+            console.log(res);
+            that.setData({
+              hidden: false
+            });
           }
         });
       }
@@ -55,16 +67,13 @@ Page({
     onLoad: function (options) {
         var that = this;
         that.setData({ userInfo: app.globalData.userInfo });
+        that.setData({
+          hidden: true
+        });
         that.getCouponList();
         app.addListener(function () {
           that.getCouponList();
         })
-        /**
-         * 显示 loading
-         */
-        that.setData({
-            hidden: true
-        });
     },
     onReady: function () {
         // 页面渲染完成
