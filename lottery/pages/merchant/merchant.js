@@ -54,6 +54,11 @@ Page({
             if (res.data.data) {
               wx.showToast({
                 title: '使用成功',
+                success: function() {
+                  wx.switchTab({
+                    url: '/pages/index/index',
+                  })
+                }
               });
             }
           }

@@ -15,18 +15,12 @@ Page({
     scanCode: function() {
       var that = this;
       wx.scanCode({
+        scanType: ['qrCode', 'barCode', 'datamatrix', 'pdf417'],
         success: function(res) {
           var code = res.result;
           console.log("scancode:", code);
           that.setData({ code: code });
           that.recieve();
-          // wx.switchTab({
-          //   url: "../index/index",
-          //   success: function() {
-          //     that.setData({ code: code });
-          //     that.recieve();
-          //   }
-          // });
         },
         fail: function(res) {
           console.log('fail', res);
@@ -40,6 +34,7 @@ Page({
           title: '提示',
           content: '请输入有效的券号！',
         });
+
         return;
       }
       var  that = this;
@@ -53,7 +48,12 @@ Page({
           if (res.data.data) {
             app.setChangedData();
             wx.showToast({
-              title: '领取成功'
+              title: '领取成功',
+              success: function() {
+                wx.switchTab({
+                  url: "../index/index"
+                });
+              }
             });
           } else {
             wx.showToast({

@@ -7,16 +7,16 @@
     bindtap='back'>返回</view>
     <view class='merchant_tool__item' 
     style='text-align:right'
-    bindtap='consumer'>领取</view>
+    bindtap='consumer'>使用</view>
   </view>
   <view class="detail__merchant">
-    <view class="merchant_title">商家信息</view>
+    <view class="merchant_title">网点信息</view>
     <view>
-      <text class="text__style1">公司名称：</text>
+      <text class="text__style1">网点名称：</text>
       <text class="text__style2">{{detail.name}}</text>
     </view>
     <view>
-      <text class="text__style1">公司地址：</text>
+      <text class="text__style1">网点地址：</text>
       <text class="text__style2">{{detail.address}}</text>
     </view>
     <view>
