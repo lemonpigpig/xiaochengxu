@@ -1,13 +1,11 @@
 
+
 <import src="../../template/itemlist.wxml"/>
 <view class='merchant__wraper'>
   <view class='merchant_tool__bar'>
     <view class='merchant_tool__item' 
     style='text-align:left'
     bindtap='back'>返回</view>
-    <view class='merchant_tool__item' 
-    style='text-align:right'
-    bindtap='consumer'>使用</view>
   </view>
   <view class="detail__merchant">
     <view class="merchant_title">网点信息</view>
@@ -28,11 +26,46 @@
       <text class="text__style2">{{detail.phone}}</text>
     </view>
   </view>
-  <view 
-  wx:for="{{couponList}}" 
-  wx:key="{{item.id}}" 
-  bindtap='select'
-  data-coupon="{{item}}">
-     <template is="item" data="{{...item}}"/> 
+  <view class='merchant_coupon_list'>
+    <view class='merchant_menue'>
+      <view class='merchant_menue_list'>
+        <view 
+          class='merchant_menue_item {{item.active ? "merchant_menue_active": ""}}'
+          wx:for="{{priceList}}"
+          bindtap='selectByPrice'
+          data-price="{{item}}"
+          wx:key="{{item.price}}">{{item.price}}元
+        </view>
+      </view>
+    </view>
+    <view class='merchant_coupon'>
+      <view 
+        wx:for="{{couponList}}" 
+        wx:key="{{item.id}}" 
+        bindtap='select'
+        data-coupon="{{item}}">
+        <label class="checkbox">
+          <checkbox value="" checked="{{item.active}}"/>
+          <view class='merchant_coupon_wraper'>
+            <view class='merchant_coupon_icon'>
+              <image src="/static/home.png" style='width:26px;height:30px;'></image>
+              <view class='merchant_coupon_name'>{{item.name}}</view>
+            </view>
+            <view class='merchant_coupon_price'>
+              <text class='label'>抵用</text>
+              <text class='biggest_strong_size marignl3'>{{item.money}}</text>
+              <text class='normal_strong_size'>元</text>
+            </view>
+            <view class='location'>{{item.location}}</view>
+          </view>
+        </label>
+      </view>
+    </view>
+  </view>
+ 
+</view>
+<view class='toolbar_merchant' bindtap='consumer'>
+  <view class='toolbar_merchant_item'>
+    使用
   </view>
 </view>

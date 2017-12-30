@@ -1,0 +1,49 @@
+.merchant_coupon_wraper {
+  width: 100%;
+  height: 65px;
+  border: 1px solid #bdb9b9;
+  border-radius: 8px;
+}
+.merchant_coupon_wraper {
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 5px;
+}
+.merchant_coupon_icon {
+  text-align: center;
+  font-size: 0px;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+.merchant_coupon_name {
+  font-size: 10px;
+  margin-top: 3px;
+  width: 70px;
+  height: 12px;
+  overflow: hidden;
+}
+.merchant_coupon_price {
+  padding-top: 12px;
+  margin-left: 35px;
+}
+.merchant_coupon_price .label{
+  font-size: 14px;
+}
+.merchant_coupon_wraper .biggest_strong_size {
+  font-size: 36px;
+  font-weight: bolder;
+}
+.merchant_coupon_wraper .normal_strong_size {
+  font-size: 12px;
+  font-weight: bolder
+}
+.marignl3 {
+  margin-left: 3px;
+}
+.merchant_coupon_wraper .location {
+  position: absolute;
+  bottom: 2px;
+  right: 5px;
+  font-size: 10px;
+}

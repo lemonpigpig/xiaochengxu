@@ -1,6 +1,9 @@
-@import "../../coupon.wxss";
+@import "../../coupon_merchant.wxss";
+body {
+  background: #000;
+}
 .merchant__wraper {
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 }
 .merchant_tool__bar {
   display: flex;
@@ -30,3 +33,61 @@
   display: flex;
   align-items: center;
 }
+.checkbox {
+  display: flex;
+}
+checkbox .wx-checkbox-input {
+  width: 12px;
+  height: 12px;
+}
+.merchant_coupon {
+  width: 100%;
+  margin-left: 52px;
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+.merchant_coupon_list {
+  display: flex;
+}
+.merchant_menue {
+  width: 45px;
+  height: 100%;
+  font-size: 12px;
+  text-align: left;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+.merchant_menue_list {
+  background: #eee;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.merchant_menue_item {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 5px;
+  color: #858585;
+}
+.toolbar_merchant {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background: #fff;
+}
+.toolbar_merchant_item {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  border-top: 1px solid #bdb9b9;
+}
+.merchant_menue_active {
+  color: #000;
+  background: #fff;
+}
+

@@ -1,3 +1,4 @@
+
 const util = require('../../utils/util.js');
 const app = getApp();
 Page({
@@ -7,7 +8,37 @@ Page({
   data: {
     detail: null,
     couponList: [],
-    id: null
+    id: null,
+    priceList: [ 
+      { price: 5, active: false }, 
+      { price: 10, active: false }, 
+      { price: 20, active: false}, 
+      { price: 30, active: false }
+    ]
+  },
+  upper: function(res) {
+    console.log(res);
+  },
+  selectByPrice: function(e) {
+    var that = this;
+    var obj = e.currentTarget.dataset.price;
+    var index = this.data.priceList.findIndex(function(item, index, arr)     {
+      return item.price == obj.price;
+    });
+    this.data.priceList.forEach(function (item, indexp, arr) {
+      var key = "priceList[" + indexp + "].active";
+      if (index !== indexp) {
+        arr[indexp].active = false;
+        that.setData({
+          [key]: false
+        });
+      } else {
+        that.setData({
+          [key]: true
+        });
+      }
+    });
+    console.log("this.data.priceLis:", this.data.priceList);
   },
   back: function() {
     wx.switchTab({
@@ -39,6 +70,8 @@ Page({
   },
   consumer: function() {
     var list = this.getSeleted();
+    console.log("list:", list);
+    return;
     if (list.length === 0) {
       wx.showToast({
         title: '请选择优惠券',
@@ -94,7 +127,8 @@ Page({
           description: data[i].description ? data[i].description : '',
           name: data[i].name ? data[i].name : '',
           flag: 1,
-          active: false
+          active: false,
+          location: data[i].location ? data[i].location : ''
         });
       }
     }
