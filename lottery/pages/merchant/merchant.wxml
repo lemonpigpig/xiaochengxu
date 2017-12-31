@@ -5,7 +5,9 @@
   <view class='merchant_tool__bar'>
     <view class='merchant_tool__item' 
     style='text-align:left'
-    bindtap='back'>返回</view>
+    bindtap='back'>
+      <image src="/static/arrow.png" style="width:20px;height:20px;"></image>
+    </view>
   </view>
   <view class="detail__merchant">
     <view class="merchant_title">网点信息</view>

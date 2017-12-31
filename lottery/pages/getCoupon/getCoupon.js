@@ -57,7 +57,8 @@ Page({
             });
           } else {
             wx.showToast({
-              title: '领取失败'
+              title: '领取失败',
+              image: app.failIcon
             });
           }
          
@@ -65,6 +66,7 @@ Page({
         fail: function (res) {
           wx.showToast({
             title: '领取失败',
+            image: app.failIcon
           })
           console.log(res);
         }

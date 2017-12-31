@@ -1,3 +1,4 @@
+
 App({
   onLaunch: function() { 
   },
@@ -10,6 +11,7 @@ App({
   appId: 'wx40e84ae5e0e3c442',
   secret: '9415c2dda017891a830e71aa44cc0c77',
   couponList: [],
+  failIcon: "/static/close.png",
   addListener: function (callback) {
     this.callback = callback;
   },
