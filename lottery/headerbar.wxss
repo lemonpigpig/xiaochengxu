@@ -1,0 +1,19 @@
+.headerbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+   background: #fff; 
+  position: fixed;
+  top: 0px;
+  z-index: 99999;
+}
+.header_title {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.headerbar image {
+  width: 20px;
+  height: 20px;
+}

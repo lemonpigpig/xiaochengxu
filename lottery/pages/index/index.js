@@ -15,6 +15,7 @@ Page({
         disabled: false,
         codeText: '获取验证码',
         showTipCode: false,
+        interval: null
     },
     inputPhone: function(e) {
       this.setData({ phone: e.detail.value });
@@ -47,6 +48,7 @@ Page({
           that.setData({ codeText: that.data.timeout + 's' });
         }
       }, 1000)
+      that.setData({ interval: interval });
     },
     sendCode: function(e) {
       var that = this;
@@ -58,13 +60,34 @@ Page({
           method: "POST",
           success: function(res) {
             if (res.statusCode === 200) {
+              if(res.data.data) {
+                wx.showToast({
+                  title: '发送成功',
+                });
+              } else {
+                wx.showToast({
+                  title: '发送失败',
+                  image: app.defaultPic
+                });
+                clearInterval(that.data.interval);
+                that.setData({ codeText: '获取验证码' });
+                that.setData({ disabled: false });
+              }
+            } else {
               wx.showToast({
-                title: '发送成功',
-              })
+                title: '发送失败',
+                image: app.defaultPic
+              });
+              clearInterval(that.data.interval);
+              that.setData({ codeText: '获取验证码' });
+              that.setData({ disabled: false });
             }
           },
           fail:function(res) {
-            console.log(res);
+            wx.showToast({
+              title: '发送失败',
+              image: app.defaultPic
+            });
           }
         })
       } else {
@@ -91,7 +114,8 @@ Page({
                   success: function() {
                     that.setData({ showLogo: false });
                   }
-                })
+                });
+                app.updateRegister(true);
               } else {
                 wx.showToast({
                   title: res.data.msg

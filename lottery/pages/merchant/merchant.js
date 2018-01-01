@@ -75,32 +75,44 @@ Page({
     }
   },
   getSeleted: function () {
-    return this.data.selectcoupon.filter(function(item, index, arr) {
+    var current = this.data.selectcoupon.filter(function (item, index, arr) {
       return item.active;
-    }).map(function(item, key, arr) {
-      return item.id + '';
-    })
+    });
+    return {
+      ids: current.map(function (item, key, arr) {
+        return item.id + '';
+      }),
+      current: current
+    };
+   
   },
   consumer: function() {
     var list = this.getSeleted();
-    if (list.length === 0) {
+    var that = this;
+    if (list.ids.length === 0) {
       wx.showToast({
         title: '请选择优惠券',
       });
+
     } else {
       util.AJAX({
         url: "/coupon/consume-coupon",
         method: "POST",
-        data: { couponNoList: list, merchantId: this.data.id },
+        data: { couponNoList: list.ids, merchantId: this.data.id },
         success: function (res) {
-          console.log(res)
           if (res.statusCode === 200) {
             if (res.data.data) {
               wx.showToast({
                 title: '使用成功',
                 success: function() {
-                  wx.switchTab({
-                    url: '/pages/index/index',
+                  wx.setStorage({
+                    key: 'consumerCoupon',
+                    data: list.current,
+                    success: function () {
+                      wx.redirectTo({
+                        url: '/pages/success/success',
+                      })
+                    }
                   })
                 }
               });

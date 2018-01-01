@@ -42,7 +42,6 @@ Page({
                 signature: res.signature
               },
               success: function (res) {
-                console.log(res, "res.data.data:", res.data.data);
                 util.setToken(res.data.data.token);
                 app.globalData.userInfo = userInfo;
                 app.isRegister = res.data.data.isRegister;

@@ -29,7 +29,6 @@ Page({
       });
     }
     this.setData({ list: list });
-    console.log("list:", list)
   },
   siteModel: function(data) {
     var model = [];
@@ -54,7 +53,6 @@ Page({
         });
       }
     }
-    console.log("model:", model);
     return model;
   },
   getList: function(res) {
@@ -64,8 +62,8 @@ Page({
       data: {
         pageIndex: that.data.pageIndex,
         pageSize: 10,
-        lng: 121.439021,//res.latitude ? res.latitude : 0,
-        lat: 31.191653, //res.longitude ? res.longitude : 0
+        lng: res.longitude,
+        lat: res.latitude, 
         distance: 50000
       },
       method: "POST",

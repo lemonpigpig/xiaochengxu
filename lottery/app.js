@@ -14,6 +14,9 @@ App({
   failIcon: "/static/close.png",
   isRegister: false,
   defaultPic: '/static/default_pic.jpg',
+  updateRegister: function(data) {
+    this.isRegister = data;
+  },
   addListener: function (callback) {
     this.callback = callback;
   },

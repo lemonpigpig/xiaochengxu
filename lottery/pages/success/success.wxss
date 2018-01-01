@@ -1,0 +1,20 @@
+@import "../../headerbar.wxss"; 
+.success_icon {
+  text-align: center;
+  padding: 20px 0 20px 0;
+}
+.show_wrpaer {
+  padding: 0px 15px 0 15px;
+}
+.consumer_title {
+  font-size: 14px;
+}
+.consumer_val {
+  font-size: 14px;
+  color: gray;
+}
+.success_tip {
+  text-align: center;
+  font-size: 12px;
+  color: #48C23D;
+}

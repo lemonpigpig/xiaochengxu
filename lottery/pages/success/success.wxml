@@ -1,0 +1,20 @@
+<view class='page_success'>
+  <view class='headerbar' bindtap='back'>
+    <image src='/static/back.png'></image>
+    <text class='header_title'>支付成功</text>
+  </view>
+  <view class='success_icon'>
+    <image src='/static/arrow.png' style='width: 40px;height:40px'></image>
+    <view class='success_tip'>支付成功</view>
+  </view>
+  <view class='show_wrpaer'>
+    <view class='consumer_num'>
+      <text class='consumer_title'>抵扣券使用张数：</text>
+      <text class='consumer_val'>{{num}}</text>
+    </view>
+    <view class='consumer_money'>
+      <text class='consumer_title'>抵扣金额：</text>
+      <text class='consumer_val'>{{money}}元</text>
+    </view>
+  </view>
+</view>
