@@ -1,0 +1,28 @@
+<view class='page__site'>
+  <scroll-view 
+    scroll-y="true" 
+    bindscrolltolower="searchScrollLower"
+    style='height:100vh'>
+    <view class='site_list'>
+      <view wx:for="{{list}}" 
+      wx:key="{{item.id}}" 
+      class='site_item'>
+        <view class='pic'>
+          <image src="{{defaultPic}}" style='width:45px;height:45px;'></image>
+        </view>
+        <view class='details'>
+          <view class='name'>{{item.merchantName}}</view>
+          <view class='address'>
+            {{item.merchantAddress}}
+          </view>
+          <text class='distance'>{{item.distanceC}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <view wx:if="{{isLoading}}" class='loading'>
+      <image src="/static/loading.gif" style='width: 28px;height: 28px;'></image>
+      <view class='white_space'></view>
+    </view>
+  </scroll-view>
+</view>

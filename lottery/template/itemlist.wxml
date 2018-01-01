@@ -1,31 +1,22 @@
 
 <template name="item">
-<view class="page__coupons">
-  <view class="item__coupon">
-    <view class="wraper__item">
-      <image src="/static/coupon_bg.png" mode="scaleToFill" class="bg__coupon {{active ? 'active_coupn' : ''}}"></image>
-      <view class='inner__coupon'>
-       <view class='item_inner left__coupon small__font'>
-          <view class="item__inner_up left__up">
-            <span>{{name}}</span>
-            <span style="color:red;" wx:if="{{flag!==1}}">x{{count}}</span>
-          </view>
-          <view class="smallest__font gray__color" style='margin-top: 2px;'>
-            有效期至2099年
-          </view>
-       </view>
-       <view class="item_inner right__coupon">
-          <view class='item__inner_up right__up'>
-             <span class="small__font red_color">¥
-             </span>
-            <span class="big__font red_color margin__left2">{{money}}</span>
-          </view>
-          <view class="smallest__font gray__color desp__coupon">
-            {{description}}
-          </view>
-       </view>
-     </view> 
-    </view>  
+ <view class='merchant_coupon_wraper'>
+  <view class='merchant_coupon_icon'>
+    <image src="/static/home.png" style='width:26px;height:30px;'></image>
+    <view class='merchant_coupon_name'>{{name}}</view>
   </view>
+  <view class='merchant_coupon_price'>
+    <text class='label'>抵用</text>
+    <text class='biggest_strong_size marignl3'>{{money}}</text>
+    <text class='normal_strong_size'>元</text>
+  </view>
+  <view class='count'>
+    <text>x{{count}}</text>
+  </view>
+  <view class='location'>{{location}}</view>
+  <image 
+      src="/static/coupon_logo.jpg"
+      style='width:70px;height:15px;'
+      class='logo'></image>
 </view>
 </template>

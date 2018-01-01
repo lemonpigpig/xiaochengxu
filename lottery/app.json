@@ -1,9 +1,10 @@
 
+
 {
   "pages": [
     "pages/login/login",
     "pages/index/index",
-    "pages/getCoupon/getCoupon",
+    "pages/site/site",
     "pages/merchant/merchant"
   ],
   "window": {
@@ -26,10 +27,10 @@
         "selectedIconPath": "./static/home_selected.png"
       },
       {
-        "pagePath": "pages/getCoupon/getCoupon",
-        "text": "领取",
-        "iconPath": "./static/coupon.png",
-        "selectedIconPath": "./static/coupon_selected.png"
+        "pagePath": "pages/site/site",
+        "text": "网点",
+        "iconPath": "./static/site.png",
+        "selectedIconPath": "./static/selected_site.png"
       }
     ]
   },

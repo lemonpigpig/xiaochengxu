@@ -17,7 +17,7 @@ body {
   height: 20px;
 } 
 .detail__merchant {
-  padding: 15px 15px 10px 15px;
+  padding: 15px 15px 25px 15px;
 }
 .merchant_title {
   font-size: 18px;
@@ -57,7 +57,6 @@ checkbox .wx-checkbox-input {
   text-align: left;
   background: transparent;
   position: fixed;
-  top: 0;
   bottom: 0;
 }
 .merchant_menue_list {
@@ -85,10 +84,9 @@ checkbox .wx-checkbox-input {
   width: 100%;
   text-align: center;
   padding: 10px 0 10px 0;
-  border-top: 1px solid #bdb9b9;
+  border-top: 1px solid #ddd;
 }
 .merchant_menue_active {
   color: #000;
   background: #fff;
 }
-

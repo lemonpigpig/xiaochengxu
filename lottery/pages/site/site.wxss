@@ -1,0 +1,47 @@
+.page__site .white_space {
+  width: 100%;
+  height: 50px;
+}
+.site_list {
+  margin-top: 15px;
+}
+.site_item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+.page__site .loading {
+  text-align: center;
+  padding-bottom: 50px;
+}
+.site_item .pic {
+  font-size: 0;
+}
+.site_item .details {
+  margin-left: 10px;
+  width: 100%;
+  position: relative
+}
+.site_item .details .name {
+  font-size: 14px;
+  font-weight: bold;
+}
+.site_item .details .address {
+  font-size: 12px;
+  font-weight: normal;
+  color: #666;
+  margin-right: 32px;
+}
+.site_item .distance {
+  color: #999;
+  font-size: 12px;
+  position: absolute;
+  right: 5px;
+  bottom:0;
+}

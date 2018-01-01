@@ -8,8 +8,20 @@ page {
 .tool__bar {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  margin: 15px 0 15px 0;
+  justify-content: center;
+  margin: 10px 0 0px 0;
+  padding-bottom: 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+
+.tool__bar .title {
+  font-size: 14px;
+  
+}
+.tool__bar .tool_bar_item {
+  text-align: center;
+  width: 50%;
 }
 .container {
   height: 100%;

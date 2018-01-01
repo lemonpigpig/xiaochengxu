@@ -70,8 +70,6 @@ Page({
   },
   consumer: function() {
     var list = this.getSeleted();
-    console.log("list:", list);
-    return;
     if (list.length === 0) {
       wx.showToast({
         title: '请选择优惠券',

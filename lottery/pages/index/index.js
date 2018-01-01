@@ -7,37 +7,182 @@ Page({
         couponList: app.couponList,
         userInfo: null,
         fixed: false,
-        markers: [{
-          iconPath: "/resources/others.png",
-          id: 0,
-          latitude: 23.099994,
-          longitude: 113.324520,
-          width: 50,
-          height: 50
-        }],
-        polyline: [{
-          points: [{
-            longitude: 113.3245211,
-            latitude: 23.10229
-          }, {
-            longitude: 113.324520,
-            latitude: 23.21229
-          }],
-          color: "#FF0000DD",
-          width: 2,
-          dottedLine: true
-        }],
-        controls: [{
-          id: 1,
-          iconPath: '/resources/location.png',
-          position: {
-            left: 0,
-            top: 300 - 50,
-            width: 50,
-            height: 50
+        showLogo: false,
+        phone: null,
+        code: null,
+        showTip: false,
+        timeout: 60,
+        disabled: false,
+        codeText: '获取验证码',
+        showTipCode: false,
+    },
+    inputPhone: function(e) {
+      this.setData({ phone: e.detail.value });
+    },
+    inputCode: function(e) {
+      this.setData({ code: e.detail.value });
+    },
+    checkPhone: function() {
+      var regex = /^[1-9]\d{10}$/;
+      console.log('this.data.phone:', this.data.phone);
+      return regex.test(this.data.phone);
+    },
+    focusPhone: function() {
+      this.setData({ showTip: false });
+    },
+    focusCode: function () {
+      this.setData({ showTipCode: false });
+    },
+    setCodeTimeout: function() {
+      var that = this;
+      this.setData({ disabled: true });
+      this.setData({ codeText: this.data.timeout + 's' });
+      var interval = setInterval(function() {
+        if (that.data.timeout === 0) {
+          clearInterval(interval);
+          that.setData({ disabled: false });
+          that.setData({ codeText: '获取验证码' });
+          that.setData({ timeout: 60 });
+        } else {
+          that.setData({ timeout: that.data.timeout - 1 });
+          that.setData({ codeText: that.data.timeout + 's' });
+        }
+      }, 1000)
+    },
+    sendCode: function(e) {
+      var that = this;
+      if (this.checkPhone()) {
+        this.setCodeTimeout();
+        util.AJAX({
+          url: "/customer/send-code",
+          data: { mobile: that.data.phone },
+          method: "POST",
+          success: function(res) {
+            if (res.statusCode === 200) {
+              wx.showToast({
+                title: '发送成功',
+              })
+            }
           },
-          clickable: true
-        }]
+          fail:function(res) {
+            console.log(res);
+          }
+        })
+      } else {
+        this.setData({ showTip: true });
+      }
+    },
+    submit: function() {
+      if (!this.data.phone) {
+        this.setData({ showTip: true });
+      }
+      if (!this.data.code) {
+        this.setData({ showTipCode: true });
+      } else {
+        var that = this;
+        util.AJAX({
+          url: '/customer/bind-mobile',
+          data: { mobile: that.data.phone, code: that.data.code },
+          method: "POST",
+          success: function(res) {
+            console.log(res);
+            if (res.statusCode === 200) {
+              if (res.data.data) {
+                wx.showToast({
+                  title: '绑定成功',
+                  success: function() {
+                    that.setData({ showLogo: false });
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: res.data.msg
+                })
+              }
+            } else {
+              wx.showToast({
+                title: '绑定失败',
+                image: app.failIcon
+              })
+            }
+          },
+          fail: function(res) {
+            console.log(res);
+            wx.showToast({
+              title: res.data.msg,
+              image: app.failIcon
+            })
+          },
+        });
+      }  
+    },
+    close: function() {
+      this.setData({ showLogo: false });
+      this.setData({ code: '' });
+      this.setData({ phone: '' });
+    },
+    scanCode: function () {
+      var that = this;
+      if (app.isRegister) {
+        wx.scanCode({
+          scanType: ['qrCode', 'barCode', 'datamatrix', 'pdf417'],
+          success: function (res) {
+            var code = res.result;
+            console.log("scancode:", code);
+            that.setData({ code: code });
+            that.recieve();
+          },
+          fail: function (res) {
+            console.log('fail', res);
+          }
+        });
+      } else {
+        that.setData({ showLogo: true });
+      }  
+    },
+    recieve: function () {
+      if (!this.data.code || this.data.code.length === 0) {
+        wx.showModal({
+          title: '提示',
+          content: '请输入有效的券号！',
+        });
+
+        return;
+      }
+      var that = this;
+      util.AJAX({
+        url: "/coupon/pick-coupon",
+        data: {
+          lotteryCode: this.data.code
+        },
+        success: function (res) {
+          console.log(res.data.data);
+          if (res.data.data) {
+            app.setChangedData();
+            wx.showToast({
+              title: '领取成功',
+              success: function () {
+                wx.switchTab({
+                  url: "../index/index"
+                });
+              }
+            });
+          } else {
+            wx.showToast({
+              title: '领取失败',
+              image: app.failIcon
+            });
+          }
+
+        },
+        fail: function (res) {
+          wx.showToast({
+            title: '领取失败',
+            image: app.failIcon
+          })
+          console.log(res);
+        }
+      });
     },
     select: function(e) {
       console.log(e);
@@ -60,8 +205,8 @@ Page({
             money: data[i].price ? data[i].price : '',
             count: data[i].count ? data[i].count : '',
             description: data[i].description ? data[i].description: '',
-            name: data[i].name ? data[i].name : ''
-
+            name: data[i].name ? data[i].name : '',
+            location: data[i].location ? data[i].location : ''
           });
         }
       }
@@ -74,7 +219,6 @@ Page({
           url: "/coupon/unused-coupon",
           header: { "Content-Type": "application/json", "token": that.data.userInfo.token },
           success: function (res) {
-            console.log("couponList:", res.data.data);
             that.setData({ couponList: that.couponModel(res.data.data) });
             app.globalData.couponList = that.couponModel(res.data.data);
             that.setData({

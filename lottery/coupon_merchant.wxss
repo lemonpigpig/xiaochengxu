@@ -24,8 +24,8 @@
   overflow: hidden;
 }
 .merchant_coupon_price {
-  padding-top: 12px;
-  margin-left: 35px;
+  padding-top: 10px;
+  margin-left: 15px;
 }
 .merchant_coupon_price .label{
   font-size: 14px;
@@ -46,4 +46,14 @@
   bottom: 2px;
   right: 5px;
   font-size: 10px;
+}
+.merchant_coupon_wraper .logo {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+}
+.merchant_coupon_wraper .count {
+  font-size: 18px;
+  padding-top: 26px;
+  margin-left: 24px;
 }

@@ -1,7 +1,48 @@
-@import "../../coupon.wxss";
+@import "../../coupon_merchant.wxss";
 .wraper {
   /* position: fixed; */
   width: 100%;
   height: 100%;
   padding-bottom: 40px;
+}
+.coupon__wraper {
+  margin-top: 10px;
+  padding: 0 8px 0 8px;
+}
+
+.login {
+  width: 100%;
+  height: 250px;
+  position: fixed;
+  bottom: 0px;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 0 15px 0 15px;
+  box-sizing: border-box;
+}
+.login .input_code {
+  display: flex;
+  font-size: 14px;
+  margin-top: 30px;
+}
+.login .title {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+}
+.login .phonenumber {
+  font-size: 14px;
+}
+.login .submit {
+  margin-top: 30px;
+}
+.login .close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.login .tip_phone {
+  font-size: 12px;
+  color: red;
 }

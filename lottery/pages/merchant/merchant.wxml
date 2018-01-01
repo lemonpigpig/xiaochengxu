@@ -29,7 +29,7 @@
     </view>
   </view>
   <view class='merchant_coupon_list'>
-    <view class='merchant_menue'>
+    <view class='merchant_menue' style='top: 30px;'>
       <view class='merchant_menue_list'>
         <view 
           class='merchant_menue_item {{item.active ? "merchant_menue_active": ""}}'
@@ -59,6 +59,10 @@
               <text class='normal_strong_size'>元</text>
             </view>
             <view class='location'>{{item.location}}</view>
+            <image 
+                src="/static/coupon_logo.jpg"
+                style='width:70px;height:15px;'
+                class='logo'></image>
           </view>
         </label>
       </view>

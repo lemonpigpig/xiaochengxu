@@ -1,3 +1,4 @@
+
 // pages/login/login.js
 const util = require('../../utils/util.js');
 const app = getApp();
@@ -14,7 +15,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("login");
     this.login(function (res, userInfo) {
       wx.switchTab({
         url: "/pages/index/index",
@@ -42,8 +42,10 @@ Page({
                 signature: res.signature
               },
               success: function (res) {
-                util.setToken(res.data.data);
+                console.log(res, "res.data.data:", res.data.data);
+                util.setToken(res.data.data.token);
                 app.globalData.userInfo = userInfo;
+                app.isRegister = res.data.data.isRegister;
                 successcb(res);
               },
               fail: function (res) {

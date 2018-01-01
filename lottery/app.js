@@ -12,6 +12,7 @@ App({
   secret: '9415c2dda017891a830e71aa44cc0c77',
   couponList: [],
   failIcon: "/static/close.png",
+  isRegister: false,
   addListener: function (callback) {
     this.callback = callback;
   },

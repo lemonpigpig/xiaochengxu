@@ -6,11 +6,19 @@
   </loading>
   <!-- <view>用户信息：{{userInfo.nickName}}</view> -->
   <view>
-    <view class="tool__bar" bindtap="scan">
-      <view>
-        <image src="/static/sao.png" style="width:22px;height:22px;"></image>
+    <view class="tool__bar">
+      <view class='tool_bar_item' bindtap="scan">
+        <view>
+        <image src="/static/sao.png" style="width:18px;height:18px;"></image>
+        </view>
+        <view class="title">用券</view>
       </view>
-      <view>用券</view>
+      <view class='tool_bar_item' bindtap='scanCode'>
+        <view>
+        <image src="/static/sao.png" style="width:18px;height:18px;"></image>
+        </view>
+        <view class="title">领券</view>
+      </view>
     </view>
   </view>
   <view class='no__result' wx:if="{{couponList.length===0}}">
@@ -19,7 +27,7 @@
       您暂时还没有可用的优惠券，请先领取
     </text>
   </view>
-   <view wx:else>
+   <view wx:else class='coupon__wraper'>
     <view 
     wx:for="{{couponList}}" 
     wx:key="{{item.id}}" 
@@ -28,4 +36,24 @@
       <template is="item" data="{{...item}}"/> 
     </view> 
   </view> 
+  <view class='login' wx:if="{{showLogo}}">
+    <view class='title'>绑定手机号</view>
+    <input placeholder='请输入手机号码' class='phonenumber'
+    bindinput="inputPhone" type="number"
+    maxlength="11" bindfocus="focusPhone"></input>
+    <view class='tip_phone' wx:if="{{showTip}}">
+      <text>请输入正确的手机号码</text>
+    </view>
+    <view class='input_code'>
+      <input placeholder='请输入验证码' bindinput="inputCode" bindfocus="focusCode"></input>
+      <button size="mini" bindtap='sendCode' disabled="{{disabled}}">{{codeText}}</button>
+    </view>  
+    <view class='tip_phone' wx:if="{{showTipCode}}">
+      <text>请输入验证码</text>
+    </view>
+    <button type="primary" class='submit' bindtap='submit'>提交</button>
+    <view class='close' bindtap='close'>
+      <image src="/static/close.png" style='width:20px;height:20px'></image>
+    </view>
+  </view>
 </view>
