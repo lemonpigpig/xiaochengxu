@@ -2,7 +2,7 @@
 <template name="item">
  <view class='merchant_coupon_wraper'>
   <view class='merchant_coupon_icon'>
-    <image src="/static/home.png" style='width:26px;height:30px;'></image>
+    <image src="{{pic}}" style='width:26px;height:30px;'></image>
     <view class='merchant_coupon_name'>{{name}}</view>
   </view>
   <view class='merchant_coupon_price'>

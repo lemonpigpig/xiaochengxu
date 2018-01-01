@@ -8,7 +8,7 @@
       wx:key="{{item.id}}" 
       class='site_item'>
         <view class='pic'>
-          <image src="{{defaultPic}}" style='width:45px;height:45px;'></image>
+          <image src="{{item.pic}}" style='width:45px;height:45px;'></image>
         </view>
         <view class='details'>
           <view class='name'>{{item.merchantName}}</view>

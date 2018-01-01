@@ -5,7 +5,8 @@
     "pages/login/login",
     "pages/index/index",
     "pages/site/site",
-    "pages/merchant/merchant"
+    "pages/merchant/merchant",
+    "pages/rule/rule"
   ],
   "window": {
     "backgroundTextStyle": "white",

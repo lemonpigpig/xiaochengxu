@@ -27,6 +27,10 @@
       <text class="text__style1">联系电话：</text>
       <text class="text__style2">{{detail.phone}}</text>
     </view>
+    <view>
+      <text class="text__style1">抵扣规则：</text>
+      <button size="mini" type="primary" bindtap='look'>查看</button>
+    </view>
   </view>
   <view class='merchant_coupon_list'>
     <view class='merchant_menue' style='top: 30px;'>
@@ -42,7 +46,7 @@
     </view>
     <view class='merchant_coupon'>
       <view 
-        wx:for="{{couponList}}" 
+        wx:for="{{selectcoupon}}" 
         wx:key="{{item.id}}" 
         bindtap='select'
         data-coupon="{{item}}">
@@ -50,7 +54,7 @@
           <checkbox value="" checked="{{item.active}}"/>
           <view class='merchant_coupon_wraper'>
             <view class='merchant_coupon_icon'>
-              <image src="/static/home.png" style='width:26px;height:30px;'></image>
+              <image src="{{item.pic}}" style='width:26px;height:30px;'></image>
               <view class='merchant_coupon_name'>{{item.name}}</view>
             </view>
             <view class='merchant_coupon_price'>
@@ -68,10 +72,30 @@
       </view>
     </view>
   </view>
- 
 </view>
 <view class='toolbar_merchant' bindtap='consumer'>
   <view class='toolbar_merchant_item'>
     使用
   </view>
 </view>
+<view class='layout' wx:if="{{show}}" bindtap='hide'> 
+</view>
+<view class='use_rules' wx:if="{{show}}">
+  <view>
+    1.抵用券可以在购买指定商品时，抵用现金使用；
+  </view>
+  <view>
+    2.每张抵用券只能使用一次，点击使用后自动注销；
+  </view>
+  <view>
+    3.抵用券长期有效，无有效期限制。特别活动设定除外；
+  </view>
+  <view>
+    4.抵用券使用数量，根据指定商品设定的抵用标准使用。
+  </view>
+  <view>
+    5.抵用券可单独抵用，也可多张抵用；
+  </view>
+</view>
+
+

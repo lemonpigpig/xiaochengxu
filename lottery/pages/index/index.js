@@ -24,7 +24,6 @@ Page({
     },
     checkPhone: function() {
       var regex = /^[1-9]\d{10}$/;
-      console.log('this.data.phone:', this.data.phone);
       return regex.test(this.data.phone);
     },
     focusPhone: function() {
@@ -85,7 +84,6 @@ Page({
           data: { mobile: that.data.phone, code: that.data.code },
           method: "POST",
           success: function(res) {
-            console.log(res);
             if (res.statusCode === 200) {
               if (res.data.data) {
                 wx.showToast({
@@ -107,7 +105,6 @@ Page({
             }
           },
           fail: function(res) {
-            console.log(res);
             wx.showToast({
               title: res.data.msg,
               image: app.failIcon
@@ -128,7 +125,6 @@ Page({
           scanType: ['qrCode', 'barCode', 'datamatrix', 'pdf417'],
           success: function (res) {
             var code = res.result;
-            console.log("scancode:", code);
             that.setData({ code: code });
             that.recieve();
           },
@@ -139,6 +135,17 @@ Page({
       } else {
         that.setData({ showLogo: true });
       }  
+    },
+    jumpToRule: function(e) {
+      wx.setStorage({
+        key: 'couponinfo',
+        data: e.currentTarget.dataset.coupon,
+        success: function() {
+          wx.redirectTo({
+            url: '/pages/rule/rule?type=1',
+          });
+        }
+      })
     },
     recieve: function () {
       if (!this.data.code || this.data.code.length === 0) {
@@ -156,7 +163,6 @@ Page({
           lotteryCode: this.data.code
         },
         success: function (res) {
-          console.log(res.data.data);
           if (res.data.data) {
             app.setChangedData();
             wx.showToast({
@@ -184,9 +190,6 @@ Page({
         }
       });
     },
-    select: function(e) {
-      console.log(e);
-    },
     scan: function () {
       var that = this;
       util.scanCode(function(res) {
@@ -206,7 +209,8 @@ Page({
             count: data[i].count ? data[i].count : '',
             description: data[i].description ? data[i].description: '',
             name: data[i].name ? data[i].name : '',
-            location: data[i].location ? data[i].location : ''
+            location: data[i].location ? data[i].location : '',
+            pic: data[i].pic ? data[i].pic : app.defaultPic
           });
         }
       }
@@ -226,7 +230,6 @@ Page({
             });
           },
           fail: function (res) {
-            console.log(res);
             that.setData({
               hidden: false
             });

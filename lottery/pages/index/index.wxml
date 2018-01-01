@@ -30,9 +30,9 @@
    <view wx:else class='coupon__wraper'>
     <view 
     wx:for="{{couponList}}" 
-    wx:key="{{item.id}}" 
-    bindtap='select'
-    data-coupon="{{item}}">
+    wx:key="{{item.id}}"
+    data-coupon="{{item}}"
+    bindtap='jumpToRule'>
       <template is="item" data="{{...item}}"/> 
     </view> 
   </view> 

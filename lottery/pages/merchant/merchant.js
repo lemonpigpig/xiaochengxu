@@ -8,7 +8,9 @@ Page({
   data: {
     detail: null,
     couponList: [],
+    selectcoupon: [],
     id: null,
+    show: false,
     priceList: [ 
       { price: 5, active: false }, 
       { price: 10, active: false }, 
@@ -16,12 +18,24 @@ Page({
       { price: 30, active: false }
     ]
   },
+  hide: function() {
+    this.setData({ show: false });
+  },
+  look: function() {
+    this.setData({ show: true });
+  },
   upper: function(res) {
     console.log(res);
   },
   selectByPrice: function(e) {
     var that = this;
     var obj = e.currentTarget.dataset.price;
+    var seleted = this.data.couponList.filter(function(item, index, arr)     {
+      return item.money == obj.price;
+    });
+    that.setData({
+      "selectcoupon": seleted
+    });
     var index = this.data.priceList.findIndex(function(item, index, arr)     {
       return item.price == obj.price;
     });
@@ -38,7 +52,6 @@ Page({
         });
       }
     });
-    console.log("this.data.priceLis:", this.data.priceList);
   },
   back: function() {
     wx.switchTab({
@@ -47,10 +60,10 @@ Page({
   },
   select: function (e) {
     var obj = e.currentTarget.dataset.coupon;
-    var index = this.data.couponList.findIndex(function (item, index, arr) {
+    var index = this.data.selectcoupon.findIndex(function (item, index, arr) {
       return item.id == obj.id;
     });
-    var key = "couponList[" + index + "].active";
+    var key = "selectcoupon[" + index + "].active";
     if (!obj.active) {
       this.setData({
         [key]: true
@@ -62,7 +75,7 @@ Page({
     }
   },
   getSeleted: function () {
-    return this.data.couponList.filter(function(item, index, arr) {
+    return this.data.selectcoupon.filter(function(item, index, arr) {
       return item.active;
     }).map(function(item, key, arr) {
       return item.id + '';
@@ -126,7 +139,8 @@ Page({
           name: data[i].name ? data[i].name : '',
           flag: 1,
           active: false,
-          location: data[i].location ? data[i].location : ''
+          location: data[i].location ? data[i].location : '',
+          pic: data[i].defaultPic ? data[i].defaultPic : app.defaultPic
         });
       }
     }
@@ -142,6 +156,8 @@ Page({
         if (res.statusCode === 200) {
           that.setData({ detail: that.merchantModel(res.data.data.merchantInfo) });
           that.setData({ couponList: that.couponModel(res.data.data.couponInfo) });
+          that.setData({ selectcoupon: that.couponModel(res.data.data.couponInfo) });
+          
         } 
       },
       fail: function (res) {

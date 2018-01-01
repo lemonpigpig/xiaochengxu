@@ -13,6 +13,7 @@ App({
   couponList: [],
   failIcon: "/static/close.png",
   isRegister: false,
+  defaultPic: '/static/default_pic.jpg',
   addListener: function (callback) {
     this.callback = callback;
   },

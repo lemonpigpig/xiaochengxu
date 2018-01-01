@@ -1,0 +1,41 @@
+.rule_header_bar {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+   background: #fff; 
+  position: fixed;
+  top: 0px;
+  z-index: 99999;
+}
+.header_title {
+  font-size: 12px;
+  margin-left: 10px;
+}
+.page_rule {
+  padding-bottom: 30px;
+}
+.rules_brief {
+  border-bottom: 1px dashed #ddd;
+  margin-top: 40px;
+}
+.rule_title {
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  padding: 20px 0 15px 0;
+  box-sizing: border-box;
+}
+.rules_detail {
+  padding: 15px 15px 0 5px;
+}
+.rules_detail view {
+  font-size: 12px;
+  text-indent: 2em;
+  line-height: 25px;
+}
+.rule-btn {
+  text-align: center;
+  margin: 0px 0 20px 0;
+}

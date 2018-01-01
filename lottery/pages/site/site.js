@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -10,7 +11,7 @@ Page({
     pageSize: 10,
     isLoading: false,
     isEnd: false,
-    defaultPic: '/static/default_pic.jpg'
+    defaultPic: app.defaultPic
   },
   searchScrollLower: function(res) {
     if (!this.data.isLoading && !this.data.isEnd) {
@@ -47,6 +48,7 @@ Page({
         }
         model.push({
           distanceC: dis,
+          pic: data[i].facadePic ? data[i].facadePic : this.data.defaultPic,
           merchantAddress: data[i].merchantAddress ? data[i].merchantAddress :'',
           merchantName: data[i].merchantName ? data[i].merchantName : ''
         });
