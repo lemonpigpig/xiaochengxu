@@ -9,10 +9,11 @@ page {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 0px 0;
+  background: #48C23D;
   padding-bottom: 10px;
   box-sizing: border-box;
   border-bottom: 1px solid #ddd;
+  color: #fff;
 }
 
 .tool__bar .title {
@@ -23,6 +24,11 @@ page {
   text-align: center;
   width: 50%;
 }
+.tool__bar .tool_bar_item image {
+  width: 32px;
+  height: 32px;
+}
+
 .container {
   height: 100%;
   display: flex;

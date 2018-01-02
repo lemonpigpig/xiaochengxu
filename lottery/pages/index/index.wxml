@@ -1,23 +1,26 @@
+
+
 <import src="../../template/itemlist.wxml"/>
 <view class='wraper' style="position: {{fixed ? 'fixed' : 'static'}}">
   <!-- loading -->
   <loading wx:if="{{hidden}}">
       加载中...
+
   </loading>
   <!-- <view>用户信息：{{userInfo.nickName}}</view> -->
   <view>
     <view class="tool__bar">
-      <view class='tool_bar_item' bindtap="scan">
-        <view>
-        <image src="/static/sao.png" style="width:18px;height:18px;"></image>
-        </view>
-        <view class="title">用券</view>
-      </view>
       <view class='tool_bar_item' bindtap='scanCode'>
         <view>
-        <image src="/static/sao.png" style="width:18px;height:18px;"></image>
+        <image src="/static/sao.png"></image>
         </view>
         <view class="title">领券</view>
+      </view>
+      <view class='tool_bar_item' bindtap="scan">
+        <view>
+        <image src="/static/sao.png"></image>
+        </view>
+        <view class="title">用券</view>
       </view>
     </view>
   </view>

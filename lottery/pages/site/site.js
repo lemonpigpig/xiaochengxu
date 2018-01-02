@@ -1,3 +1,4 @@
+
 const util = require('../../utils/util.js');
 const app = getApp();
 Page({
@@ -11,7 +12,9 @@ Page({
     pageSize: 10,
     isLoading: false,
     isEnd: false,
-    defaultPic: app.defaultPic
+    defaultPic: app.defaultPic,
+    longitude: '',
+    latitude: '', 
   },
   searchScrollLower: function(res) {
     if (!this.data.isLoading && !this.data.isEnd) {
@@ -49,21 +52,23 @@ Page({
           distanceC: dis,
           pic: data[i].facadePic ? data[i].facadePic : this.data.defaultPic,
           merchantAddress: data[i].merchantAddress ? data[i].merchantAddress :'',
-          merchantName: data[i].merchantName ? data[i].merchantName : ''
+          merchantName: data[i].merchantName ? data[i].merchantName : '',
+          canPick: data[i].canPick ? data[i].canPick : '',
+          canUse: data[i].canUse ? data[i].canUse : ''
         });
       }
     }
     return model;
   },
-  getList: function(res) {
+  getList: function() {
     var that = this;
     util.AJAX({
       url: "/merchant/nearby",
       data: {
         pageIndex: that.data.pageIndex,
         pageSize: 10,
-        lng: res.longitude,
-        lat: res.latitude, 
+        lng: that.data.longitude,
+        lat: that.data.latitude, 
         distance: 50000
       },
       method: "POST",
@@ -85,7 +90,9 @@ Page({
     var that = this;
     wx.getLocation({
       success: function (res) {
-        that.getList(res)
+        that.setData({ longitude: res.longitude});
+        that.setData({ latitude: res.latitude });
+        that.getList()
       },
     });
   },

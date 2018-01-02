@@ -4,7 +4,7 @@
   padding: 10px 0 10px 0;
   border-bottom: 1px solid #ddd;
   width: 100%;
-   background: #fff; 
+  background: #fff; 
   position: fixed;
   top: 0px;
   z-index: 99999;

@@ -12,10 +12,15 @@
         </view>
         <view class='details'>
           <view class='name'>{{item.merchantName}}</view>
+
           <view class='address'>
             {{item.merchantAddress}}
+            <text class='distance'>{{item.distanceC}}</text>
           </view>
-          <text class='distance'>{{item.distanceC}}</text>
+          <view class='tag'>
+            <view class='picke' wx:if="{{item.canPick}}">可领</view>
+            <view class='use' wx:if="{{item.canUse}}">可用</view>
+          </view>
         </view>
       </view>
     </view>

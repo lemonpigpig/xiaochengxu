@@ -1,8 +1,8 @@
 <view class='page_rule'>
-  <view class='rule_header_bar' bindtap='back'>
+  <!-- <view class='rule_header_bar' bindtap='back'>
     <image src="/static/arrow.png" style="width:20px;height:20px;"></image>
     <text class='header_title'>{{title}}</text>
-  </view>
+  </view> -->
   <view class='rules_brief'>
     <view class='rule_title'>
       {{money}}元抵用券

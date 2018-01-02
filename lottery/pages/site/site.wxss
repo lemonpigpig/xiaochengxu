@@ -37,6 +37,7 @@
   font-weight: normal;
   color: #666;
   margin-right: 32px;
+  position: relative;
 }
 .site_item .distance {
   color: #999;
@@ -44,4 +45,18 @@
   position: absolute;
   right: 5px;
   bottom:0;
+}
+.page__site .tag {
+  display: flex;
+  margin-top: 2px;
+}
+.page__site .tag view {
+  font-size: 10px;
+  padding: 1px 5px 1px 5px;
+  background: #48C23D;
+  color: #fff;
+  border-radius: 2px;
+}
+.page__site  .use {
+  margin-left: 5px;
 }

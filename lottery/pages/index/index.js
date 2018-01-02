@@ -165,7 +165,7 @@ Page({
         key: 'couponinfo',
         data: e.currentTarget.dataset.coupon,
         success: function() {
-          wx.redirectTo({
+          wx.navigateTo({
             url: '/pages/rule/rule?type=1',
           });
         }
@@ -214,12 +214,41 @@ Page({
         }
       });
     },
+
     scan: function () {
       var that = this;
       util.scanCode(function(res) {
-        wx.redirectTo({
-          url: "/pages/merchant/merchant?id=" + res.result,
-        })
+        var code = res.result;
+        util.AJAX({
+          url: "/merchant/merchant-info",
+          method: "GET",
+          data: { sysId: res.result },
+          success: function(res) {
+            if (res.statusCode === 200) {
+              if (res.data.data) {
+                wx.navigateTo({
+                  url: "/pages/merchant/merchant?id=" + code,
+                }); 
+              } else {
+                wx.showToast({
+                  title: '券无效',
+                  image: "/static/close.png"
+                });
+              }
+            } else {
+              wx.showToast({
+                title: '券无效',
+                image: "/static/close.png"
+              });
+            }
+          },
+          fail: function(){
+            wx.showToast({
+              title: '券无效',
+              image: "/static/close.png"
+            });
+          }
+        });
       })
     },
     couponModel: function(data) {

@@ -1,4 +1,5 @@
 
+
 const util = require('../../utils/util.js');
 const app = getApp();
 Page({
@@ -12,10 +13,11 @@ Page({
     id: null,
     show: false,
     priceList: [ 
-      { price: 5, active: false }, 
-      { price: 10, active: false }, 
-      { price: 20, active: false}, 
-      { price: 30, active: false }
+      {price: 0, active: true, label: '全部'},
+      { price: 5, active: false, label: '5元' }, 
+      { price: 10, active: false, label: '10元' }, 
+      { price: 20, active: false, label: '20元' }, 
+      { price: 30, active: false, label: '30元' }
     ]
   },
   hide: function() {
@@ -30,9 +32,13 @@ Page({
   selectByPrice: function(e) {
     var that = this;
     var obj = e.currentTarget.dataset.price;
-    var seleted = this.data.couponList.filter(function(item, index, arr)     {
-      return item.money == obj.price;
-    });
+    if (obj.price > 0) {
+      var seleted = this.data.couponList.filter(function (item, index, arr) {
+        return item.money == obj.price;
+      });
+    } else {
+      var seleted = this.data.couponList;
+    }
     that.setData({
       "selectcoupon": seleted
     });
@@ -63,14 +69,24 @@ Page({
     var index = this.data.selectcoupon.findIndex(function (item, index, arr) {
       return item.id == obj.id;
     });
+    var index1 = this.data.couponList.findIndex(function (item, index, arr) {
+      return item.id == obj.id;
+    });
     var key = "selectcoupon[" + index + "].active";
+    var key1 = "couponList[" + index1 + "].active";
     if (!obj.active) {
       this.setData({
         [key]: true
       });
+      this.setData({
+        [key1]: true
+      });
     } else {
       this.setData({
         [key]: false
+      });
+      this.setData({
+        [key1]: false
       });
     }
   },
@@ -83,8 +99,8 @@ Page({
         return item.id + '';
       }),
       current: current
+
     };
-   
   },
   consumer: function() {
     var list = this.getSeleted();
@@ -93,7 +109,6 @@ Page({
       wx.showToast({
         title: '请选择优惠券',
       });
-
     } else {
       util.AJAX({
         url: "/coupon/consume-coupon",
@@ -116,13 +131,17 @@ Page({
                   })
                 }
               });
+            } else {
+              wx.showToast({
+                title: res.data.msg,
+                image: '/static/close.png'
+              });
             }
           }
           // app.setChangedData();
 
         },
         fail: function (res) {
-          console.log(res)
           wx.showToast({
             title: res.data.msg,
           })
