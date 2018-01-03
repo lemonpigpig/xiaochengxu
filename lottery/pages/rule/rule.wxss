@@ -16,6 +16,7 @@
 .page_rule {
   padding-bottom: 30px;
 }
+
 .rules_brief {
   border-bottom: 1px dashed #ddd;
 }

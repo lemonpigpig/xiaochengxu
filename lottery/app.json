@@ -2,10 +2,13 @@
   "pages": [
     "pages/login/login",
     "pages/index/index",
+
     "pages/site/site",
     "pages/merchant/merchant",
     "pages/rule/rule",
-    "pages/success/success"
+    "pages/success/success",
+    "pages/my/my",
+    "pages/merchant/detail"
   ],
   "window": {
     "backgroundTextStyle": "white",
@@ -33,6 +36,12 @@
         "text": "附近网点",
         "iconPath": "./static/site.png",
         "selectedIconPath": "./static/selected_site.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "./static/my.png",
+        "selectedIconPath": "./static/selected_my.png"
       }
     ]
   },

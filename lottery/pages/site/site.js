@@ -16,6 +16,12 @@ Page({
     longitude: '',
     latitude: '', 
   },
+  jump: function(e) {
+    var code = e.currentTarget.dataset.item.code;
+    wx.navigateTo({
+      url: '/pages/merchant/detail?code=' + code,
+    });
+  },
   searchScrollLower: function(res) {
     if (!this.data.isLoading && !this.data.isEnd) {
       this.setData({ pageIndex: this.data.pageIndex + 1});
@@ -54,7 +60,8 @@ Page({
           merchantAddress: data[i].merchantAddress ? data[i].merchantAddress :'',
           merchantName: data[i].merchantName ? data[i].merchantName : '',
           canPick: data[i].canPick ? data[i].canPick : '',
-          canUse: data[i].canUse ? data[i].canUse : ''
+          canUse: data[i].canUse ? data[i].canUse : '',
+          code: data[i].sysId ? data[i].sysId : ''
         });
       }
     }

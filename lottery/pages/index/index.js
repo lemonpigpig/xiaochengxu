@@ -231,13 +231,13 @@ Page({
                 }); 
               } else {
                 wx.showToast({
-                  title: '券无效',
+                  title: '商户不存在',
                   image: "/static/close.png"
                 });
               }
             } else {
               wx.showToast({
-                title: '券无效',
+                title: '商户不存在',
                 image: "/static/close.png"
               });
             }
@@ -268,6 +268,7 @@ Page({
         }
       }
       return model;
+
     },
     getCouponList: function() {
       var that = this;

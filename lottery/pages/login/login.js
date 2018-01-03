@@ -11,6 +11,7 @@ Page({
   
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,7 +31,7 @@ Page({
         wx.getUserInfo({
           success: function (res) {
             var rawdata = JSON.parse(res.rawData);
-            var userInfo = { nickName: rawdata.nickName };
+            var userInfo = { nickName: rawdata.nickName, avatarUrl: rawdata.avatarUrl };
             util.AJAX({
               url: "/customer/login",
               method: "POST",

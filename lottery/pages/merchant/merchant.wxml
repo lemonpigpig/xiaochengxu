@@ -1,7 +1,7 @@
 
-
 <import src="../../template/itemlist.wxml"/>
 <view class='merchant__wraper'>
+
 
   <!-- <view class='merchant_tool__bar'>
     <view class='merchant_tool__item' 
@@ -82,8 +82,12 @@
 </view>
 <view class='layout' wx:if="{{show}}" bindtap='hide'> 
 </view>
-<view class='use_rules' wx:if="{{show}}">
-  <view>
+<view class='use_rules' wx:if="{{show}}" bindtap='hide'>
+  <view class='close' bindtap='hide'>
+    <image src="/static/close.png"></image>
+  </view>
+  <view class='use_titel'>抵用规则</view>
+  <view style='margin-top:10px;'>
     1.抵用券可以在购买指定商品时，抵用现金使用；
   </view>
   <view>
@@ -92,12 +96,7 @@
   <view>
     3.抵用券长期有效，无有效期限制。特别活动设定除外；
   </view>
-  <view>
-    4.抵用券使用数量，根据指定商品设定的抵用标准使用。
-  </view>
-  <view>
-    5.抵用券可单独抵用，也可多张抵用；
-  </view>
+  <view>抵用券使用数量，根据指定商品设定的抵用标准使用。</view>
 </view>
 
 

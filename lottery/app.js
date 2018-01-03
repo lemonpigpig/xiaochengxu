@@ -24,14 +24,5 @@ App({
     if (this.callback != null) {
       this.callback(data);
     }
-  },
-  getUserInfo: function () {
-    return this.globalData.userInfo ? this.globalData.userInfo :
-    wx.getStorage({
-      key: 'userInfo',
-      success: function(res) {
-        console.log("getStorage:", res);
-      },
-    })
   }
 })

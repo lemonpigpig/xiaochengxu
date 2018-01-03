@@ -1,0 +1,22 @@
+.avatarUrl {
+  text-align: center;
+}
+.avatarUrl image{
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 5x;
+}
+.my_item {
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.my_item .title {
+  color: #666;
+}
+.my_list {
+  margin-top: 25px;
+  padding: 0 15px 0 15px;
+}

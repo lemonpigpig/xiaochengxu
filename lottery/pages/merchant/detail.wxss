@@ -1,0 +1,14 @@
+.site_detail {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 40px;
+  padding: 20px 15px 0 15px;
+}
+.site_title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.site_detail .key {
+  color: #666;
+}

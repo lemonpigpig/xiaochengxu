@@ -6,7 +6,9 @@
     <view class='site_list'>
       <view wx:for="{{list}}" 
       wx:key="{{item.id}}" 
-      class='site_item'>
+      class='site_item' 
+      data-item="{{item}}"
+      bindtap='jump'>
         <view class='pic'>
           <image src="{{item.pic}}" style='width:45px;height:45px;'></image>
         </view>

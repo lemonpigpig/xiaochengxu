@@ -1,0 +1,20 @@
+<view class='page_my'>
+  <view class='avatarUrl'>
+    <image src="{{avatarUrl}}"></image>
+    <view class='nickname'>{{nickName}}</view>
+  </view>
+  <view class='my_list'>
+    <view class='my_item'>
+      <text class='title'>总共领券金额：</text>
+      <text class='num'>{{totalPrice}}元</text>
+    </view>
+    <view class='my_item'>
+      <text class='title'>已使用金额：</text>
+      <text>{{unUsedPrice}}元</text>
+    </view>
+     <view class='my_item'>
+      <text class='title'>剩余可用金额：</text>
+      <text>{{usedPrice}}元</text>
+    </view>
+  </view>
+</view>

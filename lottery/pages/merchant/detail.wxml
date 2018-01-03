@@ -1,0 +1,19 @@
+<view>
+  <view class='site_detail'>
+    <view class='site_title'>
+      网点详情
+    </view>
+    <view class='site_naem'>
+      <text class='key'>网店名称：</text>
+      <text>{{name}}</text>
+    </view>
+    <view class='site_addr'>
+      <text class='key'>网店地址：</text>
+      <text>{{addr}}</text>
+    </view>
+    <view>
+      <text wx:if="{{canPick}}">可购彩可领券 </text>
+      <text wx:if="{{canUse}}">可用券 </text>
+    </view>
+  </view>
+</view>

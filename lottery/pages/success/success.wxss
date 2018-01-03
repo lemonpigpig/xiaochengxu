@@ -1,8 +1,8 @@
 @import "../../headerbar.wxss"; 
 .success_icon {
   text-align: center;
-  padding: 20px 0 20px 0;
-  margin-top: 40px;
+  padding: 20px 0 16px 0;
+  margin-top: 15px;
 }
 .show_wrpaer {
   padding: 0px 15px 0 15px;
@@ -14,9 +14,18 @@
   font-size: 14px;
   color: gray;
 }
+.consumer_money {
+  text-align: center;
+}
+.consumer_money .big {
+  font-size: 120px;
+  font-weight: bold;
+  text-align: center;
+}
 .success_tip {
   text-align: center;
   font-size: 16px;
   color: #48C23D;
   margin-top: 5px;
+
 }
