@@ -259,7 +259,7 @@ Page({
           model.push({
             id: data[i].id ? data[i].id : '',
             money: data[i].price ? data[i].price : '',
-            count: data[i].count ? data[i].count : '',
+            count: data[i].count != undefined ? data[i].count : '',
             description: data[i].description ? data[i].description: '',
             name: data[i].name ? data[i].name : '',
             location: data[i].location ? data[i].location : '',

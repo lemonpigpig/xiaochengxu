@@ -18,7 +18,6 @@
 }
 .rules_brief {
   border-bottom: 1px dashed #ddd;
-  margin-top: 40px;
 }
 .rule_title {
   font-size: 16px;
