@@ -28,12 +28,17 @@
   box-sizing: border-box;
 }
 .rules_detail {
-  padding: 15px 15px 0 5px;
+  padding: 15px 20px 0 15px;
+  box-sizing: border-box;
+  margin-left: 20px;
 }
 .rules_detail view {
-  font-size: 12px;
-  text-indent: 2em;
+  font-size: 14px;
   line-height: 25px;
+}
+.rules_content view {
+  display:list-item;
+  list-style-type:decimal;
 }
 .rule-btn {
   text-align: center;

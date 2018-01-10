@@ -12,3 +12,7 @@
 .site_detail .key {
   color: #666;
 }
+.toolbar_merchant_item {
+  font-size: 18px;
+  font-weight: bold;
+}

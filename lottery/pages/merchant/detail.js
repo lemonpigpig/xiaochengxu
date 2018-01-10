@@ -1,4 +1,5 @@
 const util = require('../../utils/util.js');
+const app = getApp();
 
 Page({
 
@@ -9,7 +10,43 @@ Page({
     name: '',
     addr: '',
     canPick: false,
-    canUse: false
+    canUse: false,
+    code: ''
+  },
+  consumer: function() {
+    var code = this.data.code;
+    if (code) {
+      util.AJAX({
+        url: "/merchant/merchant-info",
+        method: "GET",
+        data: { sysId: code },
+        success: function (res) {
+          if (res.statusCode === 200) {
+            if (res.data.data) {
+              wx.navigateTo({
+                url: "/pages/merchant/merchant?id=" + code
+              });
+            } else {
+              wx.showToast({
+                title: '商户不存在',
+                image: "/static/close.png"
+              });
+            }
+          } else {
+            wx.showToast({
+              title: '商户不存在',
+              image: "/static/close.png"
+            });
+          }
+        },
+        fail: function () {
+          wx.showToast({
+            title: '券无效',
+            image: "/static/close.png"
+          });
+        }
+      });
+    }
   },
   initData: function(code) {
     var that = this;
@@ -18,10 +55,12 @@ Page({
       data: { sysId: code },
       success: function(res) {
         that.setData({
-          name: res.data.data.contactMobile,
-          addr: res.data.data.merchantAddress,
-          canPick: res.data.data.canPick,
-          canUse: res.data.data.canUse,
+          name: res.data.data.merchantName ? res.data.data.merchantName : '',
+          addr: res.data.data.merchantAddress ? res.data.data.merchantAddress : '',
+          canPick: res.data.data.canPick ? res.data.data.canPick : '',
+          canUse: res.data.data.canUse ? res.data.data.canUse : '',
+          code: res.data.data.sysId ? res.data.data.sysId : '',
+          commonwealGoods: res.data.data.commonwealGoods ? res.data.data.commonwealGoods : ''
         });
       },
       fail: function(res) {

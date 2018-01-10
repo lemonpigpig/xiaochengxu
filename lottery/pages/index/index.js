@@ -188,7 +188,7 @@ Page({
         },
         success: function (res) {
           if (res.data.data) {
-            app.setChangedData();
+            that.getCouponList();
             wx.showToast({
               title: '领取成功',
               success: function () {
@@ -302,9 +302,6 @@ Page({
           hidden: true
         });
         that.getCouponList();
-        app.addListener(function () {
-          that.getCouponList();
-        })
     },
     onReady: function () {
         // 页面渲染完成

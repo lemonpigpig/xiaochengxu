@@ -22,6 +22,10 @@
 }
 .site_item .pic {
   font-size: 0;
+  height: 60px;
+  background: #ed6d02;
+  display: flex;
+  align-items: center;
 }
 .site_item .details {
   margin-left: 10px;

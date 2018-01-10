@@ -12,7 +12,7 @@ Page({
     pageSize: 10,
     isLoading: false,
     isEnd: false,
-    defaultPic: app.defaultPic,
+    defaultPic: "/static/default.jpg",//app.defaultPic,
     longitude: '',
     latitude: '', 
   },

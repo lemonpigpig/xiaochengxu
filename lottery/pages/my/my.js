@@ -18,14 +18,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     this.setData({ avatarUrl: app.globalData.userInfo.avatarUrl, nickName: app.globalData.userInfo.nickName });
     this.initData();
+    app.addListener(function() {
+      that.initData();
+    });
   },
   initData:function() {
     var that = this;
     util.AJAX({
       url: "/coupon/coupon-collect",
-      data: { mobile: that.data.phone },
+      data: {},
       method: "GET",
       success: function (res) {
         if (res.statusCode === 200) {

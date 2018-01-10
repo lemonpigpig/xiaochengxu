@@ -1,3 +1,4 @@
+
 /**app.wxss**/
 body {
   background: #f2f2f2;
@@ -52,4 +53,21 @@ page{
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+.toolbar_merchant {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background: #48C23D;
+  color: #fff;
+}
+.toolbar_merchant_item {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0 12px 0;
+  border-top: 1px solid #ddd;
+  color: #fff;
+  background: 
 }

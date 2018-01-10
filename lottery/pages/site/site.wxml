@@ -10,7 +10,7 @@
       data-item="{{item}}"
       bindtap='jump'>
         <view class='pic'>
-          <image src="{{item.pic}}" style='width:45px;height:45px;'></image>
+          <image src="{{item.pic}}" style='width:60px;height:20px;'></image>
         </view>
         <view class='details'>
           <view class='name'>{{item.merchantName}}</view>
@@ -20,8 +20,8 @@
             <text class='distance'>{{item.distanceC}}</text>
           </view>
           <view class='tag'>
-            <view class='picke' wx:if="{{item.canPick}}">可领</view>
-            <view class='use' wx:if="{{item.canUse}}">可用</view>
+            <view class='picke' wx:if="{{item.canPick}}">领券</view>
+            <view class='use' wx:if="{{item.canUse}}">用券</view>
           </view>
         </view>
       </view>

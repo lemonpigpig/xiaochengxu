@@ -126,6 +126,9 @@ Page({
                     success: function () {
                       wx.redirectTo({
                         url: '/pages/success/success',
+                        success: function() {
+                          app.setChangedData();
+                        }
                       })
                     }
                   })
