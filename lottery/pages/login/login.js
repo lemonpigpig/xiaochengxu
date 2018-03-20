@@ -8,7 +8,7 @@ Page({
    */
 
   data: {
-  
+    hidden: true
   },
 
 
@@ -16,11 +16,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     this.login(function (res, userInfo) {
       wx.switchTab({
         url: "/pages/index/index",
       })
     }, function (res) {
+      that.setData({ hidden: false });
+      wx.showToast({
+        title: '登录失败',
+        image: "/static/close.png"
+      });
       console.log("fail:", res);
     });
   },
@@ -43,10 +49,14 @@ Page({
                 signature: res.signature
               },
               success: function (res) {
-                util.setToken(res.data.data.token);
-                app.globalData.userInfo = userInfo;
-                app.isRegister = res.data.data.isRegister;
-                successcb(res);
+                if (res.statusCode === 200) {
+                  util.setToken(res.data.data.token);
+                  app.globalData.userInfo = userInfo;
+                  app.isRegister = res.data.data.isRegister;
+                  successcb(res);
+                } else {
+                  failcb(res);
+                }
               },
               fail: function (res) {
                 failcb(res);
