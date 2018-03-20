@@ -22,6 +22,12 @@
         </view>
         <view class="title">用券</view>
       </view>
+       <view class='tool_bar_item' bindtap="shop">
+        <view>
+        <image src="/static/market.png"></image>
+        </view>
+        <view class="title">商城</view>
+      </view>
     </view>
   </view>
   <view class='no__result' wx:if="{{couponList.length===0}}">

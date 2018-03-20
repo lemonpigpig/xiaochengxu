@@ -291,6 +291,12 @@ Page({
         });
       }
     },
+    shop: function() {
+      wx.showModal({
+        title: '温馨提示',
+        content: '该模块建设中！'
+      });
+    },
     /** 
      * 页面初始化
      * options 为页面跳转所带来的参数
