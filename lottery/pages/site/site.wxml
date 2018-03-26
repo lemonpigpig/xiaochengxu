@@ -1,7 +1,6 @@
 <view class='page__site'>
-  <scroll-view 
+   <view 
     scroll-y="true" 
-    bindscrolltolower="searchScrollLower"
     style='height:100vh'>
     <view class='site_list'>
       <view wx:for="{{list}}" 
@@ -31,5 +30,5 @@
       <image src="/static/loading.gif" style='width: 28px;height: 28px;'></image>
       <view class='white_space'></view>
     </view>
-  </scroll-view>
+  </view> 
 </view>

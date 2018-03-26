@@ -15,7 +15,8 @@
     "navigationBarBackgroundColor": "#48C23D",
     "navigationBarTitleText": "益彩空间",
     "navigationBarTextStyle": "white",
-    "backgroundColor": "#FFF"
+    "backgroundColor": "#FFF",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     

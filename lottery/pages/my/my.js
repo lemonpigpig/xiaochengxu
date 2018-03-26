@@ -18,10 +18,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.init();
+  },
+  init: function() {
     var that = this;
     this.setData({ avatarUrl: app.globalData.userInfo.avatarUrl, nickName: app.globalData.userInfo.nickName });
     this.initData();
-    app.addListener(function() {
+    app.addListener(function () {
       that.initData();
     });
   },
@@ -80,7 +83,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.initData();
+    wx.stopPullDownRefresh();
   },
 
   /**

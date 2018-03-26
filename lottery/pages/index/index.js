@@ -17,6 +17,10 @@ Page({
         showTipCode: false,
         interval: null
     },
+    onPullDownRefresh: function() {
+      this.getCouponList();
+      wx.stopPullDownRefresh();
+    },
     inputPhone: function(e) {
       this.setData({ phone: e.detail.value });
     },
